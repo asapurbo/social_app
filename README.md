@@ -1,4 +1,4 @@
-# My Django Project
+# Social Project
 
 This is a Django-based web application.
 
