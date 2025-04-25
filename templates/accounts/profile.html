@@ -1,8 +1,4 @@
-{% extends "base/root.html" %}
-{% load static %}
-
-
-{% block root %}
+{% extends "base/root.html" %} {% load static %} {% block root %}
 <div class="bg-dark text-text font-sans min-h-screen">
     <!-- Profile Header -->
     <div class="relative w-full h-56 bg-card">
@@ -56,34 +52,44 @@
             </a>
         </div>
 
-        <div class='df34kaRs64kDd3'>
-            <div id='bioTextDiv'>
+        <div class="df34kaRs64kDd3">
+            <div id="bioTextDiv">
                 {% if user.extra_info.bio %}
-                <p class="mt-4 text-gray-400 inline-block bio_p">{{ user.extra_info.bio }}</p>
+                <p class="mt-4 text-gray-400 inline-block bio_p">
+                    {{ user.extra_info.bio }}
+                </p>
                 {% else %}
                 <p class="mt-4 text-gray-400 inline-block bio_p">Bio</p>
                 {% endif %}
-                <i class="fa-solid fa-user-pen ml-2 text-gray-400 df34kas64kd3 cursor-pointer"></i>
+                <i
+                    class="fa-solid fa-user-pen ml-2 text-gray-400 df34kas64kd3 cursor-pointer"
+                ></i>
             </div>
 
-            <div id='bioInputDiv' class='w-[400px] flex items-center mt-5 hidden'>
+            <div
+                id="bioInputDiv"
+                class="w-[400px] flex items-center mt-5 hidden"
+            >
                 {% if user.extra_info.bio %}
                 <input
-                  type="text"
-                  value="{{ user.extra_info.bio }}"
-                  name='bio'
-                  placeholder="bio"
-                  class="bioInput w-[300px] px-4 py-2 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                    type="text"
+                    value="{{ user.extra_info.bio }}"
+                    name="bio"
+                    placeholder="bio"
+                    class="bioInput w-[300px] px-4 py-2 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
                 />
                 {% else %}
                 <input
-                  type="text"
-                  name='bio'
-                  placeholder="bio"
-                  class="bioInput w-[300px] px-4 py-2 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                    type="text"
+                    name="bio"
+                    placeholder="bio"
+                    class="bioInput w-[300px] px-4 py-2 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
                 />
                 {% endif %}
-                <i class="fa-solid fa-floppy-disk ml-2 text-gray-400 cursor-pointer text-[25px] df34kaEReER4kEd3" onclick="handler({{user.id}})"></i>
+                <i
+                    class="fa-solid fa-floppy-disk ml-2 text-gray-400 cursor-pointer text-[25px] df34kaEReER4kEd3"
+                    onclick="handler({{user.id}})"
+                ></i>
             </div>
         </div>
 
@@ -112,31 +118,39 @@
     </div>
 
     <!-- Posts Feed -->
+    {% if posts %}
+    {% for post in posts %}
     <div class="px-6 mt-10 space-y-6">
         <div class="bg-card p-6 rounded-2xl shadow-md">
             <div class="flex gap-4">
-                <img
-                    src="https://i.pravatar.cc/100?img=5"
-                    class="w-10 h-10 rounded-full"
-                />
                 <div>
-                    <h3 class="font-semibold">DarkDev</h3>
-                    <p class="text-sm text-gray-400 mt-1">
-                        Built my first dark UI with Tailwind today. Love the
-                        vibe 🔥🖤
+                    {% if post.content %}
+                    <p class="text-sm text-gray-300 mt-1">
+                        {{post.content|linebreaks}}
                     </p>
+                    {% endif %} {% if post.image %}
+                    <div
+                        class="w-[300px] h-[150px] rounded-lg overflow-hidden mt-4"
+                    >
+                        <img src="{{post.image}}" alt="post image" />
+                    </div>
+                    {% endif %}
+
                     <div class="flex gap-4 mt-3 text-sm text-gray-500">
-                        <span>❤️ 128</span>
+                        <span>🤍 128</span>
+                        {% comment %} <span>❤️ 128</span> {% endcomment %}
                         <span>💬 20</span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    {% endfor%}
+    {% endif %}
 
     {% block js %}
     <script src="{% static 'js/helper/Fetch.js' %}"></script>
     <script src="{% static 'js/helper/getCookie.js' %}"></script>
     <script src="{% static 'js/profile.js' %}"></script>
-    {% endblock%}
-{% endblock %}
+    {% endblock%} {% endblock %}
+</div>

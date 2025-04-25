@@ -4,6 +4,7 @@ from account.models import ExtraInfo, SignUp
 from controllers.accounts.change_password import password
 from controllers.accounts.register_view import register
 from controllers.accounts.verify_email import email_verify
+from social.models import Post
 from utils.send_to_mail import send_to_mail
 from controllers.accounts.login_view import _login
 from django.contrib.auth.decorators import login_required
@@ -61,10 +62,15 @@ def logout_view(request):
 def profile_view(request):
     context = {
         'title': '👤Profile',
-        'info': None
+        'info': None,
+        'posts': None
     }
     data = SignUp.objects.filter(user=request.user).first()
     context['info'] = data
+    posts = Post.objects.filter(user=request.user).order_by('-created_at')
+
+    if posts is not None:
+        context['posts'] = posts
 
     return render(request, 'accounts/profile.html', context=context)
 

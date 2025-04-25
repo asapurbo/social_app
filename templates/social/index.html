@@ -37,6 +37,11 @@
         <div class="flex justify-between items-center mt-4 pl-15">
             <div class="flex items-center gap-x-3 main">
                 <div class="text-gray-500 text-sm hover:text-blue-500">
+                    <div class='relative'>
+                        <div class='absolute top-[8px] left-[-38px] hidden border border-solid border-black' id='show-image-container'>
+                            <img src id='show-image' class='w-10 h-[24px]'/>
+                        </div>
+                    </div>
                     <div
                         class="flex items-center justify-center h-[40px] w-[40px]"
                     >
@@ -62,7 +67,7 @@
 
             <button
                 type="submit"
-                class="bg-blue-500 text-white px-6 py-2 rounded-full hover:bg-blue-600"
+                class="bg-blue-500 text-white px-6 py-2 rounded-full hover:bg-blue-600 cursor-pointer post-button"
             >
                 Post
             </button>
@@ -84,6 +89,11 @@
                     <p class="text-sm text-gray-600 mt-1">
                         Enjoying the new design trends in Tailwind CSS 🚀
                     </p>
+
+                    <div class="w-[300px] h-[150px] rounded-lg overflow-hidden mt-4">
+                        <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcReXPFAJ5cUhfTLDRA7ZJlBZdwOmO7AfLRhazE1rl5-nJhk0NHeTtwX983IoqiSjrPB-R4OiIN_uaPO9jqW41E2Ww" />
+                    </div>
+
                     <div class="flex gap-6 text-gray-500 text-sm mt-4">
                         <span>❤️ Like</span>
                         <span>💬 Comment</span>
@@ -117,5 +127,6 @@
     </div>
 </main>
 
+<script src="{% static 'js/index.js' %}"></script>
 <script src="{% static 'js/emoji.js' %}"></script>
 {% endblock %}
