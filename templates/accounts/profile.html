@@ -1,0 +1,142 @@
+{% extends "base/root.html" %}
+{% load static %}
+
+
+{% block root %}
+<div class="bg-dark text-text font-sans min-h-screen">
+    <!-- Profile Header -->
+    <div class="relative w-full h-56 bg-card">
+        {% if user.signup.bg_pic %}
+        <img
+            src="{{user.signup.bg_pic.url}}"
+            class="w-full h-full object-cover opacity-50"
+        />
+        {% else %}
+        <img
+            src="https://images.pexels.com/photos/355770/pexels-photo-355770.jpeg"
+            class="w-full h-full object-cover opacity-50"
+        />
+        {% endif %}
+
+        <div class="absolute bottom-0 left-6 transform translate-y-1/2">
+            {% if user.signup.profile_pic %}
+            <img
+                src="{{ info.profile_pic }}"
+                class="rounded-full w-28 h-28 border-4 border-dark shadow-lg bg-white"
+            />
+            {% else %}
+            <img
+                src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png"
+                class="rounded-full w-28 h-28 border-4 border-dark shadow-lg bg-white"
+            />
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Info Section -->
+    <div class="mt-16 px-6">
+        <div class="flex justify-between items-center">
+            <div>
+                {% if user.signup.first_name or user.signup.last_name %}
+                <h1 class="text-2xl font-bold">
+                    {{user.signup.first_name}} {{user.signup.last_name}}
+                </h1>
+                {% else %}
+                <h1 class="text-2xl font-bold">[_👨‍💻_]</h1>
+                {% endif %}
+                <p class="text-gray-400 text-sm">@{{user.username}}</p>
+            </div>
+
+            <!-- Edit Profile Button UI only -->
+            <a
+                href="{% url 'account:edit_profile' id=user.pk%}"
+                class="cursor-pointer bg-black hover:bg-blue-600 text-white text-sm px-5 py-2 rounded-full"
+            >
+                Edit Profile
+            </a>
+        </div>
+
+        <div class='df34kaRs64kDd3'>
+            <div id='bioTextDiv'>
+                {% if user.extra_info.bio %}
+                <p class="mt-4 text-gray-400 inline-block bio_p">{{ user.extra_info.bio }}</p>
+                {% else %}
+                <p class="mt-4 text-gray-400 inline-block bio_p">Bio</p>
+                {% endif %}
+                <i class="fa-solid fa-user-pen ml-2 text-gray-400 df34kas64kd3 cursor-pointer"></i>
+            </div>
+
+            <div id='bioInputDiv' class='w-[400px] flex items-center mt-5 hidden'>
+                {% if user.extra_info.bio %}
+                <input
+                  type="text"
+                  value="{{ user.extra_info.bio }}"
+                  name='bio'
+                  placeholder="bio"
+                  class="bioInput w-[300px] px-4 py-2 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                />
+                {% else %}
+                <input
+                  type="text"
+                  name='bio'
+                  placeholder="bio"
+                  class="bioInput w-[300px] px-4 py-2 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                />
+                {% endif %}
+                <i class="fa-solid fa-floppy-disk ml-2 text-gray-400 cursor-pointer text-[25px] df34kaEReER4kEd3" onclick="handler({{user.id}})"></i>
+            </div>
+        </div>
+
+        <div class="flex gap-6 mt-6 text-sm text-gray-400">
+            <span><strong class="text-text">354</strong> Posts</span>
+            {% if user.follower.follower %}
+            <span
+                ><strong class="text-text"
+                    >{{user.follower.follower.count}}</strong
+                >
+                Followers</span
+            >
+            {% else %}
+            <span><strong class="text-text">0</strong> Followers</span>
+            {% endif %} {% if user.follow_models_user.user %}
+            <span
+                ><strong class="text-text"
+                    >{{user.follow_models_user.user.count}}</strong
+                >
+                Following</span
+            >
+            {% else %}
+            <span><strong class="text-text">0</strong> Following</span>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Posts Feed -->
+    <div class="px-6 mt-10 space-y-6">
+        <div class="bg-card p-6 rounded-2xl shadow-md">
+            <div class="flex gap-4">
+                <img
+                    src="https://i.pravatar.cc/100?img=5"
+                    class="w-10 h-10 rounded-full"
+                />
+                <div>
+                    <h3 class="font-semibold">DarkDev</h3>
+                    <p class="text-sm text-gray-400 mt-1">
+                        Built my first dark UI with Tailwind today. Love the
+                        vibe 🔥🖤
+                    </p>
+                    <div class="flex gap-4 mt-3 text-sm text-gray-500">
+                        <span>❤️ 128</span>
+                        <span>💬 20</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% block js %}
+    <script src="{% static 'js/helper/Fetch.js' %}"></script>
+    <script src="{% static 'js/helper/getCookie.js' %}"></script>
+    <script src="{% static 'js/profile.js' %}"></script>
+    {% endblock%}
+{% endblock %}

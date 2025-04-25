@@ -1,0 +1,81 @@
+{% extends "base/base.html" %}
+{% block head %}
+
+{% endblock %}
+{% block content %}
+<div class="bg-gradient-to-br from-gray-100 to-white text-gray-800">
+    <!-- Main Container -->
+    <div class="min-h-screen grid grid-cols-1 md:grid-cols-4 gap-4 p-4">
+        <!-- Sidebar -->
+        <aside
+            class="md:col-span-1 bg-white rounded-2xl p-6 shadow-md hidden md:block"
+        >
+            <h2 class="text-2xl font-bold mb-6">Menu</h2>
+            <ul class="space-y-4 text-lg">
+                <li><a href="{% url 'social:index' %}" class="hover:text-blue-500">🏠 Home</a></li>
+                <li><a href="#" class="hover:text-blue-500">🔍 Explore</a></li>
+                <li>
+                    <a href="#" class="hover:text-blue-500">🔔 Notifications</a>
+                </li>
+                <li><a href="#" class="hover:text-blue-500">✉️ Messages</a></li>
+                <li>
+                    <a href="#" class="hover:text-blue-500">📌 Bookmarks</a>
+                </li>
+                <li><a href="{% url 'account:profile' %}" class="hover:text-blue-500">👤 Profile</a></li>
+                <li><a href="{% url 'account:logout' %}" class="hover:text-blue-500"> 🔚Logout</a></li>
+            </ul>
+        </aside>
+        <aside class="md:col-span-2 lg:block">
+            {% block root %}
+
+            {% endblock %}
+        </aside>
+
+        <!-- Right Sidebar -->
+        <aside class="md:col-span-1 hidden lg:block">
+            <div class="bg-white rounded-2xl shadow-md p-6">
+                <h3 class="text-xl font-semibold mb-4">Trends</h3>
+                <ul class="space-y-2 text-sm">
+                    <li>#100DaysOfCode</li>
+                    <li>#WebDevelopment</li>
+                    <li>#TailwindCSS</li>
+                    <li>#OpenAI</li>
+                </ul>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-md p-6 mt-4">
+                <h3 class="text-xl font-semibold mb-4">Suggestions</h3>
+                <div class="space-y-3">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <img
+                                src="https://i.pravatar.cc/30?img=4"
+                                class="w-8 h-8 rounded-full"
+                            />
+                            <span class="text-sm font-medium">Dev Master</span>
+                        </div>
+                        <button class="text-xs text-blue-500 hover:underline">
+                            Follow
+                        </button>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <img
+                                src="https://i.pravatar.cc/30?img=6"
+                                class="w-8 h-8 rounded-full"
+                            />
+                            <span class="text-sm font-medium">Code Ninja</span>
+                        </div>
+                        <button class="text-xs text-blue-500 hover:underline">
+                            Follow
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+</div>
+
+{% block js %}
+{% endblock %}
+{% endblock %}

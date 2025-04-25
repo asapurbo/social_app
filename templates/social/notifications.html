@@ -1,0 +1,80 @@
+{% extends "base/root.html" %}
+
+{% block root %}
+<div class="bg-gray-100 text-gray-900 font-sans p-5 h-full rounded-lg shadow-lg">
+    <div class="max-w-2xl mx-auto mt-10 px-4">
+        <h2 class="text-3xl font-bold mb-6">🔔 Notifications</h2>
+
+        <div class="space-y-4">
+            <!-- Notification 1 -->
+            <div
+                class="flex items-start gap-4 p-4 bg-white shadow-md rounded-2xl hover:shadow-lg transition"
+            >
+                <div class="text-2xl">💬</div>
+                <div class="flex-1">
+                    <p class="text-sm">
+                        <span class="font-semibold">Alice</span> replied to your
+                        comment:
+                        <span class="italic text-gray-600"
+                            >"Let’s meet at 3 PM!"</span
+                        >
+                    </p>
+                    <span class="text-xs text-gray-400 mt-1 block"
+                        >Just now</span
+                    >
+                </div>
+            </div>
+
+            <!-- Notification 2 -->
+            <div
+                class="flex items-start gap-4 p-4 bg-white shadow-md rounded-2xl hover:shadow-lg transition"
+            >
+                <div class="text-2xl">❤️</div>
+                <div class="flex-1">
+                    <p class="text-sm">
+                        <span class="font-semibold">Bob</span> liked your post
+                        <span class="text-gray-500"
+                            >"Sunset at the beach 🌅"</span
+                        >
+                    </p>
+                    <span class="text-xs text-gray-400 mt-1 block"
+                        >1 hour ago</span
+                    >
+                </div>
+            </div>
+
+            <!-- Notification 3 -->
+            <div
+                class="flex items-start gap-4 p-4 bg-white shadow-md rounded-2xl hover:shadow-lg transition"
+            >
+                <div class="text-2xl">⚙️</div>
+                <div class="flex-1">
+                    <p class="text-sm">
+                        <span class="font-semibold">System</span> updated your
+                        preferences automatically.
+                    </p>
+                    <span class="text-xs text-gray-400 mt-1 block"
+                        >Today, 9:23 AM</span
+                    >
+                </div>
+            </div>
+
+            <!-- Notification 4 -->
+            <div
+                class="flex items-start gap-4 p-4 bg-white shadow-md rounded-2xl hover:shadow-lg transition"
+            >
+                <div class="text-2xl">👀</div>
+                <div class="flex-1">
+                    <p class="text-sm">
+                        <span class="font-semibold">Clara</span> viewed your
+                        profile.
+                    </p>
+                    <span class="text-xs text-gray-400 mt-1 block"
+                        >Yesterday</span
+                    >
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

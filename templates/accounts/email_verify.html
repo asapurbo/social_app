@@ -1,0 +1,94 @@
+{% extends "base/base.html" %} {% block content %}
+<form
+    method="POST"
+    class="max-w-sm mx-auto mt-20 bg-white rounded-2xl shadow-xl p-8 space-y-6"
+>
+    {% csrf_token %}
+    <h2 class="text-3xl font-semibold text-gray-900 text-center">
+        🔐 Verify Your OTP
+    </h2>
+    <p class='text-[15px] text-gray-600 text-center'>Check the email below for the OTP <span class='font-bold'>{{self_email}}</span></p>
+    <p class="text-base text-gray-600 text-center">
+        We’ve sent a 6-digit code to your phone. Please enter it below to
+        proceed.
+    </p>
+
+    <input
+        type="text"
+        maxlength="6"
+        name="otp"
+        placeholder="Enter OTP"
+        class="w-full px-6 py-3 text-lg border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-center tracking-widest font-mono shadow-md"
+    />
+     <!-- Error sender -->
+     {% if error %}
+     <div
+         class="bg-red-500 text-white text-sm px-4 py-3 rounded-lg shadow-md"
+     >
+         ⚠️ {{error}}
+     </div>
+     {% endif %}
+
+    <button
+        type="submit"
+        class="w-full bg-blue-600 hover:bg-blue-700 text-white text-lg py-3 rounded-lg shadow-md hover:shadow-lg transition duration-200 transform hover:scale-105 cursor-pointer"
+    >
+        Verify OTP
+    </button>
+
+    <p class="text-sm text-gray-500 text-center">
+        Didn’t receive the code?
+        <a
+            href="{% url 'account:resend_verification_email' %}"
+            id="resend-link"
+            class="text-blue-600 hover:underline font-medium"
+            >Resend OTP</a
+        >
+    </p>
+
+    <!-- Timer Section -->
+    <div id="timer" class="text-center text-sm text-gray-500 mt-4">
+        <p>Resend OTP in <span id="time">05:00</span></p>
+    </div>
+</form>
+
+{% comment %}
+<script>
+    // Timer logic
+    let timeLeft = 300; // 5 minutes = 300 seconds
+    const timeDisplay = document.getElementById('time');
+    const resendLink = document.getElementById('resend-link');
+
+    function updateTimer() {
+        let minutes = Math.floor(timeLeft / 60);
+        let seconds = timeLeft % 60;
+
+        // Format the time in MM:SS
+        timeDisplay.textContent = `${minutes < 10 ? '0' + minutes : minutes}:${
+            seconds < 10 ? '0' + seconds : seconds
+        }`;
+
+        // Disable Resend OTP until timer expires
+        if (timeLeft > 0) {
+            resendLink.classList.add('text-gray-500', 'cursor-not-allowed');
+            resendLink.classList.remove('text-blue-600', 'hover:underline');
+            resendLink.href = '#';
+        } else {
+            resendLink.classList.remove('text-gray-500', 'cursor-not-allowed');
+            resendLink.classList.add('text-blue-600', 'hover:underline');
+            resendLink.href = '#'; // Add resend logic here
+        }
+    }
+
+    function countdown() {
+        if (timeLeft > 0) {
+            timeLeft--;
+            updateTimer();
+        }
+    }
+
+    // Start the timer
+    setInterval(countdown, 1000);
+</script>
+{% endcomment %}
+{% endblock %}

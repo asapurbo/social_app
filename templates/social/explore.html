@@ -1,0 +1,100 @@
+{% extends "base/root.html" %} {% block root %}
+<div class="bg-gray-100 text-gray-900 font-sans">
+    <div class="max-w-5xl mx-auto px-4 pt-10 pb-16">
+        <!-- Title -->
+        <h1 class="text-3xl font-bold mb-6">🔍 Explore</h1>
+
+        <!-- Search Bar -->
+        <div class="mb-8">
+            <input
+                type="text"
+                placeholder="Search topics, users or tags..."
+                class="w-full px-5 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 shadow-sm"
+            />
+        </div>
+
+        <!-- Trending Tags -->
+        <div class="mb-8">
+            <h2 class="text-xl font-semibold mb-3">🔥 Trending Tags</h2>
+            <div class="flex flex-wrap gap-3">
+                <span
+                    class="px-4 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-medium cursor-pointer hover:bg-blue-200 transition"
+                    >#WebDev</span
+                >
+                <span
+                    class="px-4 py-1 bg-green-100 text-green-700 rounded-full text-sm font-medium cursor-pointer hover:bg-green-200 transition"
+                    >#UIUX</span
+                >
+                <span
+                    class="px-4 py-1 bg-pink-100 text-pink-700 rounded-full text-sm font-medium cursor-pointer hover:bg-pink-200 transition"
+                    >#Productivity</span
+                >
+                <span
+                    class="px-4 py-1 bg-yellow-100 text-yellow-700 rounded-full text-sm font-medium cursor-pointer hover:bg-yellow-200 transition"
+                    >#AI</span
+                >
+                <span
+                    class="px-4 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-medium cursor-pointer hover:bg-purple-200 transition"
+                    >#Design</span
+                >
+            </div>
+        </div>
+
+        <!-- Explore Cards -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Card 1 -->
+            <div
+                class="bg-white p-5 rounded-2xl shadow-md hover:shadow-xl transition"
+            >
+                <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxK5ShH5eYuXvFgjTp4fw9KUHAsgzE1BnqoA&s"
+                    alt="explore"
+                    class="rounded-xl mb-4 w-full h-40 object-cover"
+                />
+                <h3 class="font-semibold text-lg mb-1">
+                    Build Your Own AI Chatbot
+                </h3>
+                <p class="text-sm text-gray-600 mb-2">
+                    Step-by-step guide to creating smart assistants using modern
+                    tools 🤖
+                </p>
+                <div class="text-xs text-gray-400">#AI · 2h ago</div>
+            </div>
+
+            <!-- Card 2 -->
+            <div
+                class="bg-white p-5 rounded-2xl shadow-md hover:shadow-xl transition"
+            >
+                <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxK5ShH5eYuXvFgjTp4fw9KUHAsgzE1BnqoA&s"
+                    alt="explore"
+                    class="rounded-xl mb-4 w-full h-40 object-cover"
+                />
+                <h3 class="font-semibold text-lg mb-1">Top 5 UI Design Tips</h3>
+                <p class="text-sm text-gray-600 mb-2">
+                    Make your interfaces smoother and more intuitive 🧠
+                </p>
+                <div class="text-xs text-gray-400">#UIUX · 1 day ago</div>
+            </div>
+
+            <!-- Card 3 -->
+            <div
+                class="bg-white p-5 rounded-2xl shadow-md hover:shadow-xl transition"
+            >
+                <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxK5ShH5eYuXvFgjTp4fw9KUHAsgzE1BnqoA&s"
+                    alt="explore"
+                    class="rounded-xl mb-4 w-full h-40 object-cover"
+                />
+                <h3 class="font-semibold text-lg mb-1">
+                    Mastering JavaScript in 30 Days
+                </h3>
+                <p class="text-sm text-gray-600 mb-2">
+                    Fun challenges to improve your JS skills day-by-day 🚀
+                </p>
+                <div class="text-xs text-gray-400">#WebDev · 4 days ago</div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

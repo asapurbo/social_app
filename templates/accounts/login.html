@@ -1,0 +1,74 @@
+{% extends "base/base.html" %} {% block content %}
+<div class="bg-gray-900 flex items-center justify-center h-screen">
+    <div
+        class="w-full max-w-sm bg-gray-800 rounded-2xl shadow-lg p-8 text-white"
+    >
+        <h2 class="text-2xl font-bold mb-6 text-center">Sign In</h2>
+        <form method="post" class="space-y-4">
+            {% csrf_token %}
+            <div>
+                <label
+                    for="username"
+                    class="block text-sm font-medium text-white"
+                    >Username</label
+                >
+                <input
+                    type="text"
+                    name="username"
+                    id="username"
+                    class="mt-1 block w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-2 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                />
+            </div>
+            <div>
+                <label
+                    for="password"
+                    class="block text-sm font-medium text-white"
+                    >Password</label
+                >
+                <input
+                    type="password"
+                    name="password"
+                    id="password"
+                    class="mt-1 block w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-2 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                />
+            </div>
+            <!-- Start of error sender -->
+            {% if error %}
+            <div
+                class="bg-red-500 text-white text-sm px-4 py-3 rounded-lg shadow-md"
+            >
+                ⚠️ {{error}}
+            </div>
+            {% endif %}
+            <!-- End of error sender -->
+
+            <!-- Start of invalid error sender -->
+            {% if email_invalid_error %}
+            <a href="{% url 'account:resend_verification_email' %}">
+                <div
+                    class="mb-4 p-4 text-sm text-red-700 bg-red-100 border border-red-300 rounded-md"
+                >
+                    <p>Go to the email Verify📨🏃‍♂️</p>
+                </div>
+            </a>
+            {% endif %}
+            <!-- End of error invalid sender -->
+
+            <button
+                type="submit"
+                class="w-full bg-indigo-600 hover:bg-indigo-700 transition rounded-lg py-2 font-semibold text-white cursor-pointer"
+            >
+                Sign In
+            </button>
+        </form>
+        <p class="text-sm mt-4 text-center text-white">
+            Don't have an account?
+            <a
+                href="{% url 'account:register'%}"
+                class="text-indigo-400 hover:underline"
+                >Sign Up</a
+            >
+        </p>
+    </div>
+</div>
+{% endblock %}

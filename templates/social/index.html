@@ -1,0 +1,121 @@
+{% extends "base/root.html" %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/emoji.css' %}" />
+{% endblock %}
+
+{% block root %}
+<!-- Feed -->
+<main class="md:col-span-2 space-y-6">
+    <!-- Post Input -->
+    <form method="POST" enctype="multipart/form-data" class="bg-white rounded-2xl shadow-md p-6">
+        {% csrf_token %}
+        <div class="flex items-start gap-4">
+            {% if user.signup.profile_pic %}
+                <img
+                    id="previewImage"
+                    src="{{ user.signup.profile_pic }}"
+                    alt="Profile Image"
+                    class="rounded-full w-10 h-10"
+                />
+            {% else %}
+                <img
+                    id="previewImage"
+                    src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png"
+                    alt="Profile Image"
+                    class="rounded-full w-10 h-10"
+                />
+            {% endif %}
+            <textarea
+                name='content'
+                id="textarea"
+                class="w-full bg-gray-100 rounded-xl p-3 focus:outline-none"
+                rows="3"
+                placeholder="What's on your mind?"
+            ></textarea>
+        </div>
+        <div class="flex justify-between items-center mt-4 pl-15">
+            <div class="flex items-center gap-x-3 main">
+                <div class="text-gray-500 text-sm hover:text-blue-500">
+                    <div
+                        class="flex items-center justify-center h-[40px] w-[40px]"
+                    >
+                        <label for="file-upload" class="cursor-pointer">
+                            <i class="fa-solid fa-file-image text-[20px]"></i>
+                            <input
+                                name="image"
+                                id="file-upload"
+                                type="file"
+                                class="hidden"
+                            />
+                        </label>
+                    </div>
+                </div>
+                <div id="emoji_container"></div>
+                <div
+                    id="btn"
+                    class="text-gray-500 text-sm hover:text-blue-500 cursor-pointer"
+                >
+                    <i class="fa-solid fa-face-smile text-[20px]"></i>
+                </div>
+            </div>
+
+            <button
+                type="submit"
+                class="bg-blue-500 text-white px-6 py-2 rounded-full hover:bg-blue-600"
+            >
+                Post
+            </button>
+        </div>
+    </form>
+
+    <!-- Posts -->
+    <div class="space-y-4">
+        <!-- Single Post -->
+        <div class="bg-white rounded-2xl shadow-md p-6">
+            <div class="flex gap-4">
+                <img
+                    src="https://i.pravatar.cc/100?img=1"
+                    alt="User"
+                    class="w-12 h-12 rounded-full"
+                />
+                <div>
+                    <div class="font-semibold text-lg">John Doe</div>
+                    <p class="text-sm text-gray-600 mt-1">
+                        Enjoying the new design trends in Tailwind CSS 🚀
+                    </p>
+                    <div class="flex gap-6 text-gray-500 text-sm mt-4">
+                        <span>❤️ Like</span>
+                        <span>💬 Comment</span>
+                        <span>🔄 Share</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Another Post -->
+        <div class="bg-white rounded-2xl shadow-md p-6">
+            <div class="flex gap-4">
+                <img
+                    src="https://i.pravatar.cc/100?img=3"
+                    alt="User"
+                    class="w-12 h-12 rounded-full"
+                />
+                <div>
+                    <div class="font-semibold text-lg">Jane Smith</div>
+                    <p class="text-sm text-gray-600 mt-1">
+                        Working on a new project today. So excited! 😄
+                    </p>
+                    <div class="flex gap-6 text-gray-500 text-sm mt-4">
+                        <span>❤️ Like</span>
+                        <span>💬 Comment</span>
+                        <span>🔄 Share</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script src="{% static 'js/emoji.js' %}"></script>
+{% endblock %}

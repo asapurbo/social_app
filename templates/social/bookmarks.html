@@ -1,0 +1,84 @@
+{% extends "base/root.html" %} {% block root %}
+<div class="bg-gray-100 text-gray-900 font-sans">
+    <div class="max-w-4xl mx-auto mt-10 px-4">
+        <h1 class="text-3xl font-bold mb-6">🔖 Bookmarks</h1>
+
+        <div class="space-y-5">
+            <!-- Bookmark 1 -->
+            <div
+                class="bg-white rounded-2xl shadow-md hover:shadow-lg transition p-5 flex flex-col md:flex-row gap-4"
+            >
+                <div class="flex-shrink-0">
+                    <img
+                        src="https://media.istockphoto.com/id/173015527/photo/a-single-red-book-on-a-white-surface.jpg?s=612x612&w=0&k=20&c=AeKmdZvg2_bRY2Yct7odWhZXav8CgDtLMc_5_pjSItY="
+                        alt="thumbnail"
+                        class="rounded-xl w-32 h-20 object-cover"
+                    />
+                </div>
+                <div class="flex-1">
+                    <h3 class="text-lg font-semibold mb-1">
+                        Learn JavaScript in 2025
+                    </h3>
+                    <p class="text-sm text-gray-600 mb-2">
+                        A beginner’s guide to mastering JS with practical
+                        projects and best practices.
+                    </p>
+                    <div class="text-xs text-gray-400">
+                        📅 Saved on Apr 15, 2025
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bookmark 2 -->
+            <div
+                class="bg-white rounded-2xl shadow-md hover:shadow-lg transition p-5 flex flex-col md:flex-row gap-4"
+            >
+                <div class="flex-shrink-0">
+                    <img
+                        src="https://media.istockphoto.com/id/173015527/photo/a-single-red-book-on-a-white-surface.jpg?s=612x612&w=0&k=20&c=AeKmdZvg2_bRY2Yct7odWhZXav8CgDtLMc_5_pjSItY="
+                        alt="thumbnail"
+                        class="rounded-xl w-32 h-20 object-cover"
+                    />
+                </div>
+                <div class="flex-1">
+                    <h3 class="text-lg font-semibold mb-1">
+                        Modern UI Design Trends
+                    </h3>
+                    <p class="text-sm text-gray-600 mb-2">
+                        Discover sleek UI patterns and visual trends dominating
+                        in 2025.
+                    </p>
+                    <div class="text-xs text-gray-400">
+                        ⭐️ Favorite · 📅 2 days ago
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bookmark 3 -->
+            <div
+                class="bg-white rounded-2xl shadow-md hover:shadow-lg transition p-5 flex flex-col md:flex-row gap-4"
+            >
+                <div class="flex-shrink-0">
+                    <img
+                        src="https://media.istockphoto.com/id/173015527/photo/a-single-red-book-on-a-white-surface.jpg?s=612x612&w=0&k=20&c=AeKmdZvg2_bRY2Yct7odWhZXav8CgDtLMc_5_pjSItY="
+                        alt="thumbnail"
+                        class="rounded-xl w-32 h-20 object-cover"
+                    />
+                </div>
+                <div class="flex-1">
+                    <h3 class="text-lg font-semibold mb-1">
+                        Top 10 Books Every Developer Should Read
+                    </h3>
+                    <p class="text-sm text-gray-600 mb-2">
+                        Build your dev mindset with these timeless tech + career
+                        books.
+                    </p>
+                    <div class="text-xs text-gray-400">
+                        📚 Personal List · 📅 Last week
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
